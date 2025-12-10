@@ -1,5 +1,6 @@
 {
-  "$schema": "https://schema.tauri.app/config_v2.json",
+  "$schema": "../node_modules/@tauri-apps/cli/schema.json",
+  "identifier": "com.poskasirtauri.desktop",
   "productName": "POS Tauri",
   "version": "0.1.0",
   "build": {
@@ -22,11 +23,9 @@
     }
   },
   "bundle": {
-    "identifier": "com.poskasirtauri.desktop",
     "publisher": "Pos Kasir Tauri",
     "targets": [
-      "msi",
-      "nsis"
+      "msi"
     ],
     "icon": [
       "icons/icon.ico"
