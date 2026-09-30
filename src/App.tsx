@@ -11,12 +11,18 @@ function App() {
   const [nama, setNama] = useState("");
   const [stok, setStok] = useState(0);
   const [data, setData] = useState<Barang[]>([]);
+  const [error, setError] = useState("");
 
   const load = () => {
     invoke<Barang[]>("list_barang").then(setData);
   };
 
   const tambah = async () => {
+    if (!nama.trim()) {
+      setError("Nama Barang wajib diisi");
+      return;
+    }
+    setError("");
     await invoke("create_barang", { nama, stok });
     setNama("");
     setStok(0);
@@ -36,6 +42,7 @@ function App() {
         value={nama}
         onChange={(e) => setNama(e.target.value)}
       />
+      {error && <div style={{ color: "red", marginTop: 4 }}>{error}</div>}
       <input
         type="number"
         placeholder="Stok"
